@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(135deg, #5c6bc0 0%, #3f51b5 100%);
+  color: #ffffff;
+  height: 80px;
+  padding: 0 20px;
+  font-size: 1.75rem;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  background-image: linear-gradient(
+    135deg,
+    rgba(92, 107, 192, 0.5) 0%,
+    rgba(63, 81, 181, 0.5) 100%
+  );
+  z-index: -1;
+}

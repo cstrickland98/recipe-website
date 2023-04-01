@@ -1,0 +1,25 @@
+<mat-dialog-content>
+  <h1>{{ recipe.title }}</h1>
+  <h2>{{ recipe.cookTime }}</h2>
+  <button mat-raised-button color="primary" (click)="close(true)">
+    {{ recipe.selected ? "Remove from" : "Add to" }} Master List
+  </button>
+  <p>{{ recipe.description }}</p>
+  <h3>Ingredients</h3>
+  <ul>
+    <li *ngFor="let ingredient of recipe.ingredients">
+      {{ ingredient.name }}
+      {{ ingredient.quantity > 0 || ingredient.unit != "" ? "-" : "" }}
+      {{ ingredient.quantity > 0 ? ingredient.quantity : "" }}
+      {{ ingredient.unit != "" ? ingredient.unit : "" }}
+    </li>
+  </ul>
+
+  <h3>Instructions</h3>
+  <ol>
+    <li *ngFor="let instruction of recipe.instructions">{{ instruction }}</li>
+  </ol>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="close(false)">Close</button>
+</mat-dialog-actions>

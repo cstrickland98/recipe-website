@@ -1,0 +1,33 @@
+<div class="controls-container">
+  <button (click)="toggleSelectedRecipes()" class="toggle-btn">
+    {{ showSelectedOnly ? "Show All Recipes" : "Show Selected Recipes" }}
+  </button>
+  <button
+    (click)="deselectAllRecipes()"
+    [disabled]="!anyRecipeSelected()"
+    class="deselect-btn"
+  >
+    Deselect All Recipes
+  </button>
+  <div class="search-container">
+    <input
+      [(ngModel)]="searchText"
+      (input)="searchRecipes()"
+      placeholder="Search for recipes"
+    />
+  </div>
+</div>
+
+<div class="main-container">
+  <div class="recipe-list">
+    <app-recipe-card
+      *ngFor="let recipe of filteredRecipes; let i = index"
+      [recipe]="recipe"
+      (click)="openRecipeModal(recipe)"
+      [ngClass]="{ 'selected-card': recipe.selected }"
+    ></app-recipe-card>
+  </div>
+  <app-ingredients-list
+    [ingredients]="masterIngredientsList"
+  ></app-ingredients-list>
+</div>

@@ -1,0 +1,20 @@
+<div class="ingredients-list">
+  <h3>Master Ingredients List</h3>
+  <ul>
+    <li *ngFor="let ingredient of ingredients | keyvalue">
+      <a
+        [href]="
+          'https://www.walmart.com/search?q=' +
+          encodeURIComponent(getIngredientName(ingredient.key))
+        "
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ getIngredientName(ingredient.key) }}
+        {{ ingredient.value > 0 || getUnit(ingredient.key) != "" ? "-" : "" }}
+        {{ ingredient.value > 0 ? ingredient.value : "" }}
+        {{ getUnit(ingredient.key) }}
+      </a>
+    </li>
+  </ul>
+</div>
